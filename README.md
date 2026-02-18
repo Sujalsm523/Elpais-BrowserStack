@@ -1,203 +1,203 @@
-Here is a **clean, production-style README.md** aligned with your final structure (app/ + data/) and written the way BrowserStack reviewers expect.
+# El País Opinion Scraper – BrowserStack Automation
 
-You can copy this directly into your README.md.
+## Overview
 
-**El País Opinion Scraper – BrowserStack Automation**
-=====================================================
-
-**Overview**
-------------
-
-This project automates the extraction and analysis of articles from the **El País** Spanish news website using Selenium.
+This project automates the extraction and analysis of articles from the **El País** Spanish news website using Selenium.
 
 The solution demonstrates:
 
-*   Web scraping and browser automation
-    
-*   Image download and file handling
-    
-*   Translation API integration
-    
-*   Text analysis
-    
-*   Parallel cross-browser execution using **BrowserStack**
-    
+- Web automation and scraping
+- Image downloading and file handling
+- Translation API integration
+- Text processing and analysis
+- Parallel cross-browser execution using BrowserStack
 
-**Features**
-------------
+---
 
-### **1\. Website Validation**
+## Assignment Requirements Covered
 
-*   Opens the El País website.
-    
-*   Verifies that the page language is **Spanish** (lang="es").
-    
+### 1. Website Validation
+- Opens the El País website
+- Verifies that the page language is Spanish (`lang="es"`)
 
-### **2\. Opinion Section Scraping**
+---
 
-*   Navigates to the **Opinion** section.
-    
-*   Fetches the **first 5 articles**.
-    
-*   *   Title (Spanish)
-        
-    *   Content (Spanish)
-        
-    *   Cover image (if available)
-        
+### 2. Scrape Opinion Articles
+- Navigates to the **Opinion** section
+- Fetches the **first 5 articles**
+- Extracts:
+  - Title (Spanish)
+  - Content (Spanish)
+  - Cover image (if available)
 
-Images are saved locally.
+Images are saved locally in the `data/images/` directory.
 
-### **3\. Title Translation**
+---
 
-*   Translates article titles from **Spanish to English** using Google Translate API.
-    
-*   Prints translated titles for each article.
-    
+### 3. Translate Article Titles
+- Uses Google Translate API
+- Translates titles from **Spanish to English**
+- Prints translated titles
 
-### **4\. Text Analysis**
+---
 
-*   Combines all translated titles.
-    
-*   Identifies words that appear **more than twice** across all titles.
-    
-*   Prints each repeated word with its occurrence count.
-    
-*   Displays a message if no such words are found.
-    
+### 4. Analyze Translated Headers
+- Combines all translated titles
+- Identifies words that appear **more than twice** across all titles
+- Prints each repeated word along with its occurrence count
+- Displays a message if no such words are found
 
-### **5\. Cross-Browser Execution (BrowserStack)**
+---
 
-The solution runs in **parallel across 5 environments**:
+### 5. Cross-Browser Testing (BrowserStack)
+
+The solution runs in parallel across **5 environments**:
 
 **Desktop**
-
-*   Windows 11 – Chrome
-    
-*   Windows 10 – Edge
-    
-*   macOS Monterey – Firefox
-    
+- Windows 11 – Chrome  
+- Windows 10 – Edge  
+- macOS Monterey – Firefox  
 
 **Mobile**
-
-*   iPhone 14 (iOS 16)
-    
-*   Samsung Galaxy S22 (Android 12)
-    
+- iPhone 14 (iOS 16)  
+- Samsung Galaxy S22 (Android 12)  
 
 Each environment:
+- Executes independently
+- Logs results separately
+- Generates structured output
 
-*   Executes independently
-    
-*   Logs results separately
-    
-*   Generates a structured JSON report
-    
+---
 
-**Project Structure**
----------------------
+## Project Structure
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   elpais-browserstack/  │  ├── app/  │   ├── browser/  │   │   └── driver_factory.py      # Local & BrowserStack driver setup  │   │  │   ├── services/  │   │   ├── scraper.py             # Article scraping logic  │   │   ├── translator.py          # Title translation  │   │   └── analyzer.py            # Repeated word analysis  │   │  │   ├── utils/  │   │   └── reporter.py            # JSON report generation  │   │  │   ├── config.py                  # Environment configuration  │   └── runner.py                  # Execution logic  │  ├── data/  │   ├── images/                    # Downloaded article images  │   └── reports/                   # Execution reports  │  ├── main.py                        # Entry point  ├── requirements.txt  ├── .env.example  └── README.md   `
+```
+elpais-browserstack/
+│
+├── app/
+│   ├── browser/
+│   │   └── driver_factory.py
+│   │
+│   ├── services/
+│   │   ├── scraper.py
+│   │   ├── translator.py
+│   │   └── analyzer.py
+│   │
+│   ├── utils/
+│   │   └── reporter.py
+│   │
+│   ├── config.py
+│   └── runner.py
+│
+├── data/
+│   ├── images/
+│   └── reports/
+│
+├── main.py
+├── requirements.txt
+├── .env.example
+└── README.md
+```
 
-**Setup Instructions**
-----------------------
+---
 
-### **1\. Clone the Repository**
+## Setup Instructions
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   git clone   cd elpais-browserstack   `
+### 1. Clone the repository
 
-### **2\. Install Dependencies**
+```bash
+git clone https://github.com/Sujalsm523/Elpais-BrowserStack/
+cd elpais-browserstack
+```
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   pip install -r requirements.txt   `
+---
 
-### **3\. Configure BrowserStack Credentials**
+### 2. Install dependencies
 
-Create a .env file in the root directory:
+```bash
+pip install -r requirements.txt
+```
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   BS_USERNAME=your_browserstack_username  BS_ACCESS_KEY=your_browserstack_access_key   `
+---
 
-Get credentials from:
+### 3. Configure BrowserStack Credentials
 
+Create a `.env` file in the project root:
+
+```
+BS_USERNAME=your_browserstack_username
+BS_ACCESS_KEY=your_browserstack_access_key
+```
+
+Get your credentials from:  
 https://www.browserstack.com/accounts/settings
 
-**Running the Project**
------------------------
+---
 
-### **Run Locally**
+## Running the Project
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python main.py --mode local   `
+### Run Locally
 
-### **Run on BrowserStack (Parallel)**
+```bash
+python main.py --mode local
+```
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   python main.py --mode browserstack   `
+---
 
-**Sample Output**
------------------
+### Run on BrowserStack (Parallel Execution)
 
-Plain textANTLR4BashCC#CSSCoffeeScriptCMakeDartDjangoDockerEJSErlangGitGoGraphQLGroovyHTMLJavaJavaScriptJSONJSXKotlinLaTeXLessLuaMakefileMarkdownMATLABMarkupObjective-CPerlPHPPowerShell.propertiesProtocol BuffersPythonRRubySass (Sass)Sass (Scss)SchemeSQLShellSwiftSVGTSXTypeScriptWebAssemblyYAMLXML`   ========== Environment: Windows 11 - Chrome ==========  Article 1  Title (ES): Catástrofe en la ayuda al desarrollo  Content (ES): Los drásticos recortes de Trump...  Title (EN): Catastrophe in development aid  Repeated words (count > 2):  No words repeated more than twice  ========== Completed: Windows 11 - Chrome ==========   `
+```bash
+python main.py --mode browserstack
+```
 
-**Generated Artifacts**
------------------------
+---
 
-*   Images → data/images/
-    
-*   Reports → data/reports/report\_.json
-    
-*   BrowserStack sessions → Available in Automate Dashboard
-    
+## Sample Output
 
-Dashboard:
+```
+========== Environment: Windows 11 - Chrome ==========
 
-https://automate.browserstack.com/dashboard
+Article 1
+Title (ES): Catástrofe en la ayuda al desarrollo
+Content (ES): Los drásticos recortes de Trump...
+Title (EN): Catastrophe in development aid
+
+Repeated words (count > 2):
+No words repeated more than twice
+
+========== Completed: Windows 11 - Chrome ==========
+```
+
+---
+
+## Generated Artifacts
+
+- Downloaded images → `data/images/`
+- Execution reports → `data/reports/report_<timestamp>.json`
+- BrowserStack sessions → https://automate.browserstack.com/dashboard
 
 Each session includes:
+- OS / Device details
+- Browser information
+- Execution logs
+- Video recording
 
-*   OS / Device details
-    
-*   Browser information
-    
-*   Execution logs
-    
-*   Video recording
-    
+---
 
-**Technical Highlights**
-------------------------
+## Technical Highlights
 
-*   Selenium WebDriver (Local + Remote)
-    
-*   Parallel execution using ThreadPoolExecutor
-    
-*   Environment-based configuration (.env)
-    
-*   Production-style project structure
-    
-*   Robust image handling (JPEG / PNG / WebP / AVIF)
-    
-*   Clean environment-wise logging
-    
-*   Structured JSON reporting
-    
+- Selenium WebDriver (Local + Remote)
+- Parallel execution using `ThreadPoolExecutor`
+- Environment-based configuration using `.env`
+- Production-style modular architecture
+- Robust image handling (JPEG / PNG / WebP / AVIF)
+- Clean environment-wise logging
+- Structured JSON reporting
 
-**Author**
-----------
+---
 
-**Sujal More**
+## Author
 
-Electronics & Computer Science Engineering
-
+**Sujal More**  
+Electronics & Computer Science Engineering  
 Cloud Computing Intern – Coulomb LiTech
-
-If you want to maximize your chances of selection, I can next give you:
-
-*   Final **submission checklist (what to attach)**
-    
-*   What reviewers actually check on BrowserStack
-    
-*   A **2-minute explanation** you can say in interview
-    
-
-Just ask:
-
-**“Give final submission checklist”**.

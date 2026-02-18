@@ -199,5 +199,3 @@ Each session includes:
 ## Author
 
 **Sujal More**  
-Electronics & Computer Science Engineering  
-Cloud Computing Intern – Coulomb LiTech

@@ -1,194 +1,133 @@
 
+📦 El País BrowserStack Automation
 
-El País Opinion Scraper – BrowserStack Automation
+A Python-based automation project that scrapes articles from the El País Spanish news site and runs browser automation tests in parallel across multiple environments using Selenium and BrowserStack.
 
-Overview
+🚀 Overview
 
-This project automates the extraction and analysis of articles from the El País Spanish news website using Selenium.
-
-The solution demonstrates:
-	•	Web scraping and browser automation
-	•	Image download and file handling
-	•	Translation API integration
-	•	Text analysis
-	•	Parallel cross-browser execution using BrowserStack
-
-⸻
-
-Features
-
-1. Website Validation
-	•	Opens the El País website.
-	•	Verifies that the page language is Spanish (lang="es").
+This solution demonstrates:
+	•	🕸️ Web scraping & browser automation
+	•	🖼️ Image download and local storage
+	•	🌐 Translation API integration (Spanish → English)
+	•	🧠 Text analysis (word frequency)
+	•	📊 Parallel cross-browser execution on BrowserStack
+	•	📦 Structured JSON reporting
 
 ⸻
 
-2. Opinion Section Scraping
-	•	Navigates to the Opinion section.
-	•	Fetches the first 5 articles.
-	•	Extracts:
-	•	Title (Spanish)
-	•	Content (Spanish)
-	•	Cover image (if available)
-
-Images are saved locally.
-
-⸻
-
-3. Title Translation
-	•	Translates article titles from Spanish to English using Google Translate API.
-	•	Prints translated titles for each article.
-
-⸻
-
-4. Text Analysis
-	•	Combines all translated titles.
-	•	Identifies words that appear more than twice across all titles.
-	•	Prints each repeated word with its occurrence count.
-	•	Displays a message if no such words are found.
-
-⸻
-
-5. Cross-Browser Execution (BrowserStack)
-
-The solution runs in parallel across 5 environments:
-
+🧱 Features
+	1.	Website Validation
+Loads and verifies El País homepage with proper Spanish language detection.
+	2.	Opinion Section Scraping
+	•	Navigates to the Opinion section
+	•	Fetches the first 5 articles
+	•	Extracts titles, contents, and cover images
+	3.	Title Translation
+Uses Google Translate API to convert Spanish article titles to English.
+	4.	Text Analysis
+Combines all translated titles and highlights repeated words with counts.
+	5.	Cross-Browser Execution (BrowserStack)
+Runs tests in parallel across 5 environments:
 Desktop
-	•	Windows 11 – Chrome
-	•	Windows 10 – Edge
-	•	macOS Monterey – Firefox
-
+	•	Windows 11 — Chrome
+	•	Windows 10 — Edge
+	•	macOS Monterey — Firefox
 Mobile
 	•	iPhone 14 (iOS 16)
 	•	Samsung Galaxy S22 (Android 12)
-
-Each environment:
-	•	Executes independently
-	•	Logs results separately
-	•	Generates a structured JSON report
+Each run logs results separately and produces a JSON report.
 
 ⸻
 
-Project Structure
+📂 Project Structure
 
 elpais-browserstack/
-│
 ├── app/
 │   ├── browser/
 │   │   └── driver_factory.py      # Local & BrowserStack driver setup
-│   │
-│   ├── services/
-│   │   ├── scraper.py             # Article scraping logic
-│   │   ├── translator.py          # Title translation
-│   │   └── analyzer.py            # Repeated word analysis
-│   │
+│   ├── scraper.py                 # Web scraping logic
+│   ├── translator.py              # Title translation using API
+│   ├── analyzer.py                # Text frequency analyzer
 │   ├── utils/
-│   │   └── reporter.py            # JSON report generation
-│   │
-│   ├── config.py                  # Environment configuration
-│   └── runner.py                  # Execution logic
-│
+│   ├── reporter.py                # JSON report generation
+│   └── config.py                  # Environment configuration
 ├── data/
 │   ├── images/                    # Downloaded article images
-│   └── reports/                   # Execution reports
-│
-├── main.py                        # Entry point
-├── requirements.txt
-├── .env.example
-└── README.md
+│   └── reports/                   # Generated execution reports
+├── benv/                          # Python virtual environment
+├── main.py                       # Main entry point
+├── requirements.txt              # Dependencies
+├── .env.example                  # Example env config
+└── README.md                    # Project documentation
 
 
 ⸻
 
-Setup Instructions
+🛠️ Setup Instructions
 
 1. Clone the Repository
 
-git clone <your-repo-url>
-cd elpais-browserstack
-
-
-⸻
+git clone https://github.com/Sujalsm523/Elpais-BrowserStack.git
+cd Elpais-BrowserStack
 
 2. Install Dependencies
 
 pip install -r requirements.txt
 
+3. Configure Environment Variables
 
-⸻
-
-3. Configure BrowserStack Credentials
-
-Create a .env file in the root directory:
+Create a .env file in the root:
 
 BS_USERNAME=your_browserstack_username
 BS_ACCESS_KEY=your_browserstack_access_key
 
-Get credentials from:
-https://www.browserstack.com/accounts/settings
+Get your credentials from your BrowserStack account settings.
 
 ⸻
 
-Running the Project
+▶️ Running the Project
 
-Run Locally
+🧪 Local Execution
 
 python main.py --mode local
 
+This runs the scraper and analysis locally without BrowserStack.
 
 ⸻
 
-Run on BrowserStack (Parallel)
+☁️ Run on BrowserStack (Parallel)
 
 python main.py --mode browserstack
 
+This executes across multiple environments on .
 
 ⸻
 
-Sample Output
+🧾 Sample Output
 
 ========== Environment: Windows 11 - Chrome ==========
-
-Article 1
-Title (ES): Catástrofe en la ayuda al desarrollo
+Article 1 Title (ES): Catástrofe en la ayuda al desarrollo
 Content (ES): Los drásticos recortes de Trump...
 Title (EN): Catastrophe in development aid
 
-Repeated words (count > 2):
-No words repeated more than twice
-
+Repeated words (count > 2): No words repeated more than twice
 ========== Completed: Windows 11 - Chrome ==========
 
 
 ⸻
 
-Generated Artifacts
-	•	Images → data/images/
-	•	Reports → data/reports/report_<timestamp>.json
-	•	BrowserStack sessions → Available in Automate Dashboard
-
-Dashboard:
-https://automate.browserstack.com/dashboard
-
-Each session includes:
-	•	OS / Device details
-	•	Browser information
-	•	Execution logs
-	•	Video recording
-
-⸻
-
-Technical Highlights
-	•	Selenium WebDriver (Local + Remote)
-	•	Parallel execution using ThreadPoolExecutor
+🧠 Technical Highlights
+	•	Selenium WebDriver with local & remote drivers
+	•	Parallel execution via ThreadPoolExecutor
 	•	Environment-based configuration (.env)
-	•	Production-style project structure
 	•	Robust image handling (JPEG / PNG / WebP / AVIF)
-	•	Clean environment-wise logging
-	•	Structured JSON reporting
+	•	Structured, environment-specific logging
+	•	JSON reporting for automated test runs
 
 ⸻
 
-Author
+🧑‍💻 Author
 
 Sujal More
+
+⸻

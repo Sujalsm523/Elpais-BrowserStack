@@ -1,5 +1,6 @@
 import argparse
 import logging
+import json
 from concurrent.futures import ThreadPoolExecutor
 
 from app.browser.browser_factory import create_driver
@@ -23,6 +24,8 @@ def run_test(mode="local", capability=None):
 
     driver = create_driver(mode, capability)
     result = {"environment": env_name, "articles": [], "translated_titles": []}
+    status = "passed"
+    reason = "Test executed successfully"
 
     # Collect logs instead of printing immediately
     env_logs = []
@@ -57,9 +60,31 @@ def run_test(mode="local", capability=None):
                 env_logs.append(f"{word}: {count}")
         else:
             env_logs.append("No repeated words found")
-
+    except Exception as e:
+            status = "failed"
+            reason = str(e)
     finally:
-        driver.quit()
+        if driver:
+        # Set BrowserStack status only for remote sessions
+            if mode == "browserstack":
+                try:
+                    driver.execute_script(
+                    'browserstack_executor: ' + json.dumps({
+                        "action": "setSessionStatus",
+                        "arguments": {
+                            "status": status,
+                            "reason": reason
+                        }
+                    })
+                )
+                except Exception:
+                    pass  
+
+        try:
+            driver.quit()
+        except Exception:
+            pass
+
         env_logs.append(f"========== Completed: {env_name} ==========\n")
 
     # Print logs together (no interleaving)
